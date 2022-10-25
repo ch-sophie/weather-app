@@ -13,32 +13,63 @@ export class AppComponent implements OnInit{
   temp!: number;
   humidity!: number;
   wind_speed!: number;
-  cityName!: string;
+  // cityName!: string;
+  cityName: string = 'Paris';
+  description!: string;
 
-  constructor(private weatherService: WeatherService){
-
-  }
+  constructor(private weatherService: WeatherService){ }
 
   // weatherData?: WeatherData;
 
   ngOnInit(): void {
-      this.weatherService.getWeatherData('Paris')
+      this.getWeatherData(this.cityName);
+      this.cityName = '';
+
+      this.weatherService.getWeatherData('')
       .subscribe({
         next: (response) => {
           this.weatherData = response;
 
+          this.cityName = this.weatherData.name;
           this.temp = (this.weatherData.main.temp);
           this.humidity = this.weatherData.main.humidity;
           this.wind_speed = this.weatherData.wind.speed;
-          this.cityName = this.weatherData.name;
+          this.description = this.weatherData.weather[0].main;
 
           console.log(response);
-
-          console.log(this.temp);
-          console.log(this.humidity);
-          console.log(this.wind_speed);
-          console.log(this.cityName);
+          console.log('name: ' + this.cityName);
+          console.log('temperature: ' + this.temp);
+          console.log('humidity%: ' + this.humidity);
+          console.log('wind_speed: ' + this.wind_speed);
+          console.log('descr: ' + this.description);
         }
       })
+  }
+
+  onSubmit(){
+    this.getWeatherData(this.cityName);
+    this.cityName = '';
+  }
+
+  private getWeatherData(cityName: string){
+    this.weatherService.getWeatherData(cityName)
+    .subscribe({
+      next: (response) => {
+        this.weatherData = response;
+
+        this.cityName = this.weatherData.name;
+        this.temp = (this.weatherData.main.temp);
+        this.humidity = this.weatherData.main.humidity;
+        this.wind_speed = this.weatherData.wind.speed;
+        this.description = this.weatherData.weather[0].main;
+
+        console.log(response);
+        console.log('name: ' + this.cityName);
+        console.log('temperature: ' + this.temp);
+        console.log('humidity%: ' + this.humidity);
+        console.log('wind_speed: ' + this.wind_speed);
+        console.log('descr: ' + this.description);
+      }
+    })
   }
 }

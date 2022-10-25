@@ -15,9 +15,7 @@ export class WeatherService {
     return this.http.get<WeatherData>(path, {
       params: new HttpParams()
       .set('q', cityName)
-      .set('units', 'metric')
       .set('mode', 'json')
-      
     })
   }
 }
