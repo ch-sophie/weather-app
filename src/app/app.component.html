@@ -7,9 +7,13 @@
 
 <div class="container" *ngIf="weatherData">
   <div class="upper-data">
-    <img src="../assets/sun.webp" alt="image" *ngIf="temp >= 20">
-    <img src="../assets/blue3.jpeg" alt="image" *ngIf="temp < 20">
-    <img src="../assets/blue.jpeg" alt="image" *ngIf="temp <= 10">
+    <img src="../assets/blue3.jpeg" alt="imageMainDefault">
+    <img src="../assets/sun.webp" alt="imageSun" *ngIf="description === 'Clear' && temp >= 16">
+    <img src="../assets/clouds1.webp" alt="imageClear" *ngIf="description === 'Clear' && temp < 16">
+    <img src="../assets/blue3.jpeg" alt="imageClouds" *ngIf="description === 'Clouds'">
+    <img src="../assets/rain1.jpeg" alt="imageRain" *ngIf="description === 'Rain' || description === 'Drizzle' || description === 'Thunderstorm'">
+    <img src="../assets/snow.jpeg" alt="imageSnow" *ngIf="description === 'Snow'">
+    <img src="../assets/dust.jpeg" alt="imageSmoke" *ngIf="description === 'Smoke' || description === 'Ash' || description === 'Dust' || description === 'Sand' || description === 'Mist' || description === 'Haze' || description === 'Fog' || description === 'Tornado' || description === 'Squall'">
     <div class="weather-data">
       <div class="location">{{ cityName + ', ' + weatherData.sys.country }}</div>
       <div class="temperature">{{ temp | number: '1.0-0' }} °C</div>
