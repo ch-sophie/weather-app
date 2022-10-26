@@ -16,4 +16,4 @@ There is also a search input to search for the weather of other locations.
 **https://bucolic-crepe-02c578.netlify.app/**
 
 #### Preview:
-![weather app](./src/assets/preview.png "weather app")
+<img src="./src/assets/preview.png" alt="weather app" style="width:40%">
