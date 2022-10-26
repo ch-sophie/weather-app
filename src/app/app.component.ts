@@ -31,7 +31,7 @@ export class AppComponent implements OnInit{
           this.weatherData = response;
 
           this.cityName = this.weatherData.name;
-          this.temp = (this.weatherData.main.temp);
+          this.temp = this.weatherData.main.temp;
           this.humidity = this.weatherData.main.humidity;
           this.wind_speed = this.weatherData.wind.speed;
           this.description = this.weatherData.weather[0].main;
