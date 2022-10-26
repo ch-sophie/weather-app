@@ -65,10 +65,6 @@ export class AppComponent implements OnInit{
 
         console.log(response);
         console.log('name: ' + this.cityName);
-        console.log('temperature: ' + this.temp);
-        console.log('humidity%: ' + this.humidity);
-        console.log('wind_speed: ' + this.wind_speed);
-        console.log('descr: ' + this.description);
       }
     })
   }
